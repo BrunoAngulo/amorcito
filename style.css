@@ -1,0 +1,498 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 90, 140, 0.2), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(178, 40, 95, 0.24), transparent 32%),
+    #12070d;
+  color: #fff8fb;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 26px 26px;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.experience {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  place-items: center;
+  padding: 0;
+}
+
+.invitation {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  padding: clamp(28px, 6vw, 72px);
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(255, 20, 70, 0.2), transparent 36%),
+    radial-gradient(circle at 10% 15%, rgba(146, 0, 46, 0.22), transparent 28%),
+    radial-gradient(circle at 90% 85%, rgba(255, 25, 77, 0.16), transparent 30%),
+    rgba(8, 0, 4, 0.94);
+  box-shadow:
+    inset 0 0 110px rgba(255, 30, 75, 0.1);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transform-origin: center;
+  transition: opacity 450ms ease, transform 450ms ease;
+  animation: invitation-heartbeat 1.8s ease-in-out infinite;
+  place-content: center;
+  place-items: center;
+}
+
+.invitation::before,
+.invitation::after {
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle, rgba(255, 240, 244, 0.9) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(255, 35, 78, 0.82) 0 1.5px, transparent 2.3px),
+    radial-gradient(circle, rgba(175, 0, 45, 0.68) 0 1px, transparent 2px);
+  background-position: 0 0, 34px 23px, 13px 48px;
+  background-size: 72px 72px, 94px 94px, 61px 61px;
+  content: "";
+  opacity: 0.48;
+  transform: rotate(0deg) scale(1.1);
+  animation: invitation-particles 12s linear infinite;
+}
+
+.invitation::after {
+  filter: blur(1px);
+  opacity: 0.28;
+  transform: rotate(180deg) scale(1.22);
+  animation-direction: reverse;
+  animation-duration: 17s;
+}
+
+.eyebrow {
+  max-width: min(88vw, 820px);
+  margin: 0 0 18px;
+  color: #ff8ba4;
+  font-size: clamp(0.78rem, 2.2vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 8px rgba(255, 44, 88, 0.9),
+    0 0 22px rgba(255, 20, 65, 0.48);
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.05;
+}
+
+h1 {
+  max-width: min(92vw, 980px);
+  margin-inline: auto;
+  background: linear-gradient(180deg, #fff8fa 4%, #ff7594 48%, #e3194b 100%);
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2.25rem, 6.2vw, 5.4rem);
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  filter: drop-shadow(0 0 11px rgba(255, 38, 82, 0.72));
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  min-height: 60px;
+  margin-top: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  min-width: 132px;
+  min-height: 52px;
+  padding: 14px 24px;
+  border: 1px solid rgba(255, 80, 116, 0.5);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.18), transparent 25%),
+    rgba(35, 2, 15, 0.9);
+  box-shadow:
+    0 0 18px rgba(255, 35, 80, 0.22),
+    inset 0 0 18px rgba(255, 35, 80, 0.1);
+  color: #ffd6df;
+  font: inherit;
+  font-weight: 750;
+  text-shadow: 0 0 9px rgba(255, 40, 84, 0.72);
+  cursor: pointer;
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.button-yes {
+  min-width: 220px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.3), transparent 26%),
+    linear-gradient(135deg, #a80734, #ff416e 55%, #bd0d3e);
+  box-shadow:
+    0 0 18px rgba(255, 38, 82, 0.55),
+    0 12px 32px rgba(255, 30, 75, 0.28),
+    inset 0 0 16px rgba(255, 225, 232, 0.16);
+  color: white;
+}
+
+.button-yes:hover {
+  box-shadow:
+    0 0 30px rgba(255, 38, 82, 0.78),
+    0 16px 38px rgba(255, 30, 75, 0.38);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.button-yes:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.button-no {
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  will-change: left, top;
+}
+
+.button-no.is-running {
+  position: fixed;
+  margin: 0;
+  transition: none;
+}
+
+@keyframes invitation-heartbeat {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 0 90px rgba(255, 30, 75, 0.08);
+    filter: brightness(1);
+  }
+
+  12% {
+    box-shadow:
+      inset 0 0 150px rgba(255, 30, 75, 0.16);
+    filter: brightness(1.08);
+  }
+
+  24% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes invitation-particles {
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+.invitation.is-absorbing {
+  pointer-events: none;
+  animation: invitation-absorb 950ms cubic-bezier(0.7, 0, 0.9, 0.3) forwards;
+}
+
+.invitation.is-hidden {
+  visibility: hidden;
+}
+
+@keyframes invitation-absorb {
+  0% {
+    border-radius: 0;
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  38% {
+    border-radius: 42%;
+    filter: blur(1px);
+    opacity: 0.95;
+    transform: scale(0.78, 0.62);
+  }
+
+  72% {
+    border-radius: 50%;
+    filter: blur(4px) saturate(1.8);
+    opacity: 0.72;
+    transform: scale(0.22);
+  }
+
+  100% {
+    border-radius: 50%;
+    filter: blur(12px) saturate(2.4);
+    opacity: 0;
+    transform: scale(0.015);
+  }
+}
+
+.answer {
+  position: absolute;
+  top: clamp(18px, 4vh, 38px);
+  z-index: 2;
+  width: min(88vw, 580px);
+  padding: 14px 22px 18px;
+  border: 1px solid rgba(255, 52, 92, 0.22);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 115%, rgba(255, 30, 75, 0.22), transparent 54%),
+    rgba(8, 0, 3, 0.28);
+  box-shadow:
+    0 0 28px rgba(255, 20, 70, 0.12),
+    inset 0 0 24px rgba(255, 35, 80, 0.06);
+  opacity: 0;
+  text-align: center;
+  transform: translateY(24px);
+  transition: opacity 700ms ease 300ms, transform 700ms ease 300ms;
+  backdrop-filter: blur(3px);
+}
+
+.answer.is-visible {
+  animation: answer-heartbeat 1.8s ease-in-out infinite;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.answer p,
+.answer span {
+  display: block;
+  margin: 0;
+  color: #ff8aa3;
+  font-size: clamp(0.72rem, 2vw, 0.88rem);
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px rgba(255, 42, 90, 0.75);
+  text-transform: uppercase;
+}
+
+.answer h2 {
+  margin: 5px 0 8px;
+  background: linear-gradient(180deg, #fff5f7 5%, #ff587b 58%, #cf153f 100%);
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  letter-spacing: -0.045em;
+  filter: drop-shadow(0 0 10px rgba(255, 32, 78, 0.8));
+}
+
+@keyframes answer-heartbeat {
+  0%,
+  100% {
+    box-shadow: 0 0 24px rgba(255, 20, 70, 0.1);
+  }
+
+  14% {
+    box-shadow: 0 0 42px rgba(255, 20, 70, 0.28);
+  }
+
+  28% {
+    box-shadow: 0 0 30px rgba(255, 20, 70, 0.16);
+  }
+}
+
+.absorption {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.absorption-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff5f7;
+  box-shadow:
+    0 0 18px #fff,
+    0 0 42px #ff315f,
+    0 0 90px #e00035;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.absorption.is-active .absorption-core {
+  animation: absorption-core 1.25s ease-in-out forwards;
+}
+
+.absorption-particle {
+  position: absolute;
+  left: var(--start-x);
+  top: var(--start-y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--color);
+  box-shadow: 0 0 10px var(--color);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.absorption.is-active .absorption-particle {
+  animation: particle-absorb var(--duration) cubic-bezier(0.72, 0, 0.82, 0.3) var(--delay) forwards;
+}
+
+@keyframes particle-absorb {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  16% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+
+  78% {
+    opacity: 0.95;
+  }
+
+  100% {
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+@keyframes absorption-core {
+  0%,
+  44% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  66% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(5);
+  }
+
+  82% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(2.4);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(16);
+  }
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.08);
+  transform-origin: center;
+  filter: blur(10px);
+  transition:
+    opacity 650ms ease,
+    filter 850ms ease,
+    transform 950ms cubic-bezier(0.16, 0.9, 0.28, 1.15);
+}
+
+#heart {
+  z-index: 0;
+}
+
+#garden {
+  z-index: 1;
+  transform-origin: center bottom;
+}
+
+body.is-transforming {
+  background: #000;
+}
+
+body.is-transforming::before {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+body.is-transforming canvas {
+  opacity: 0.18;
+}
+
+body.accepted {
+  background: #000;
+}
+
+body.accepted::before {
+  display: none;
+}
+
+body.accepted canvas {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+@media (max-width: 520px) {
+  .invitation {
+    padding: 30px 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button {
+    min-width: 118px;
+    padding-inline: 18px;
+  }
+
+  .button-yes {
+    width: min(100%, 250px);
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .invitation.is-absorbing,
+  .absorption.is-active .absorption-core,
+  .absorption.is-active .absorption-particle,
+  .answer.is-visible {
+    animation-duration: 0.01ms !important;
+  }
+}

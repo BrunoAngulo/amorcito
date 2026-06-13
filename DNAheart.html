@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Una invitación para ti</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="experience" id="experience">
+    <section class="invitation" id="invitation" aria-labelledby="question">
+      <p class="eyebrow">Hay algo que me gustaría preguntarte...</p>
+      <h1 id="question">¿Me concederías el placer de una primera cita?</h1>
+
+      <div class="buttons" id="buttons">
+        <button class="button button-yes" id="yesButton" type="button">Sí, vamos a una cita</button>
+        <button class="button button-no" id="noButton" type="button">No</button>
+      </div>
+    </section>
+
+    <section class="answer" id="answer" aria-live="polite" aria-hidden="true">
+      <p>Esperaba que dijeras eso</p>
+      <h2>Te quiero mucho</h2>
+      <span>Nos vemos más rato</span>
+    </section>
+  </main>
+
+  <div class="absorption" id="absorption" aria-hidden="true">
+    <span class="absorption-core"></span>
+  </div>
+  <canvas id="heart" aria-hidden="true"></canvas>
+  <canvas id="garden" aria-hidden="true"></canvas>
+  <script src="./script.js"></script>
+
+</body>
+</html>
